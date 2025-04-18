@@ -1,13 +1,4 @@
-# Running retail-web-app
-
-
-## Getting Started
-
-
-```shell
-podman run -p 6379:6379  valkey/valkey:8.1
-```
-
+# Running web-app
 
 ```shell
 java --add-opens java.management/com.sun.jmx.remote.security=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED -jar applications/spring-gf-locator/target/spring-gf-locator-0.0.1-SNAPSHOT.jar --server.port=0

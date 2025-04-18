@@ -90,7 +90,7 @@
 
     <body>
 
-    <h1> Application Demo</h1>
+    <h1> Filtering Data Pattern Demo</h1>
         <ul>
             <li><a href="/swagger-ui.html">Swagger-UI</a></li>
         </ul>
@@ -100,7 +100,13 @@
             <h2>Accounts</h2>
             <div id="dataRows">
                 <table >
-                    <tr><th>Product</th></tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                        <th>Location</th>
+                    </tr>
                     <tbody id="accounts">
                     </tbody>
                 </table>
@@ -137,7 +143,17 @@
         	    continue; //already exist
 
             $('#accounts')
-            .prepend('<tr><td>'+ account.name + '</td></tr>');
+            .prepend('<tr>'+
+                        '<td>'+ account.name + '</td>'+
+                        '<td>'+ account.accountType + '</td>'+
+                        '<td>'+ account.status + '</td>'+
+                        '<td>'+ account.notes + '</td>'+
+                        '<td>'+
+                            account.location.address + ' '+
+                            account.location.cityTown + ' '+
+                            account.location.stateProvince
+                           +'</td>'+
+                    '</tr>');
         }
 
 
