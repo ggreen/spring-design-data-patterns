@@ -1,1 +1,0 @@
-# spring-design-data-patterns

@@ -1,0 +1,10 @@
+server:
+  port: 0
+spring:
+  application:
+      name:  account-sink
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: showcase.event.streaming.accounts
