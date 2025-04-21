@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>spring.design.data.patterns</groupId>
-    <artifactId>spring-data-pattern</artifactId>
+    <artifactId>spring-design-data-patterns</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <name>spring-design-data-patterns</name>

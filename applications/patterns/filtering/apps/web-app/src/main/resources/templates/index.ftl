@@ -91,6 +91,7 @@
     <body>
 
     <h1> Filtering Data Pattern Demo</h1>
+    <h2>${accountType} Accounts</h2>
         <ul>
             <li><a href="/swagger-ui.html">Swagger-UI</a></li>
         </ul>

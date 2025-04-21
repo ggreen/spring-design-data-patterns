@@ -1,7 +1,15 @@
+# Data Filtering
+
+The following demonstrates the power of RabbitMQ AMQP filter expressions for streams.
+
+
+| Project                 | Notes                                                                     |
+|-------------------------|---------------------------------------------------------------------------|
+| [web-app](apps/web-app) | Web application that using ValKey to present filter data stored in ValKey |
 
 
 
-
+# Demonstrator
 
 ## Getting Started
 
@@ -46,13 +54,13 @@ java -jar applications/patterns/filtering/sources/account-source/target/account-
 
 
 ```shell
-java -jar applications/patterns/filtering/sinks/account-sink/target/account-sink-0.0.1-SNAPSHOT.jar --spring.rabbitmq.host=localhost --account.type=premium --spring.data.redis.host=localhost --spring.data.redis.port=6379
+java -jar applications/patterns/filtering/sinks/account-sink/target/account-sink-0.0.1-SNAPSHOT.jar --spring.rabbitmq.host=localhost --account.type=premium --spring.data.redis.host=localhost --spring.data.redis.port=6379 
 ```
 
 ## Premium Web App
 
 ```shell
-java -jar applications/patterns/filtering/apps/web-app/target/web-app-0.1.1-SNAPSHOT.jar --account.type=premium --spring.data.redis.host=localhost --spring.data.redis.port=6379 --server.port=8084
+java -jar applications/patterns/filtering/apps/web-app/target/web-app-0.1.1-SNAPSHOT.jar --account.type=premium --spring.data.redis.host=localhost --spring.data.redis.port=6379 --server.port=8084 --retail.favorites.refresh.rateSeconds=1
 ```
 
 ```shell
@@ -63,13 +71,13 @@ open http://localhost:8084
 
 
 ```shell
-java -jar applications/patterns/filtering/sinks/account-sink/target/account-sink-0.0.1-SNAPSHOT.jar --spring.rabbitmq.host=localhost --account.type=standard --spring.data.redis.host=localhost --spring.data.redis.port=6779
+java -jar applications/patterns/filtering/sinks/account-sink/target/account-sink-0.0.1-SNAPSHOT.jar --spring.rabbitmq.host=localhost --account.type=standard --spring.data.redis.host=localhost --spring.data.redis.port=6779 
 ```
 
 ## Standard Web App
 
 ```shell
-java -jar applications/patterns/filtering/apps/web-app/target/web-app-0.1.1-SNAPSHOT.jar --account.type=standard --spring.data.redis.host=localhost --spring.data.redis.port=6779 --server.port=8085
+java -jar applications/patterns/filtering/apps/web-app/target/web-app-0.1.1-SNAPSHOT.jar --account.type=standard --spring.data.redis.host=localhost --spring.data.redis.port=6779 --server.port=8085 --retail.favorites.refresh.rateSeconds=1
 ```
 
 ```shell

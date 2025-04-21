@@ -1,0 +1,15 @@
+{
+  "id": "ht001",
+  "name": "Green Bikes",
+  "accountType": "premium",
+  "status": "OPEN",
+  "notes": "Good price for bikes",
+  "location": {
+    "id": "h01",
+    "address": "123 Straight Street",
+    "cityTown": "JC",
+    "stateProvince": "NC",
+    "zipPostalCode": "55555",
+    "countryCode": "US"
+  }
+}
