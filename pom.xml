@@ -11,9 +11,14 @@
     <name>spring-design-data-patterns</name>
     <modules>
         <module>components/account-domain</module>
-        <module>applications/patterns/filtering/sources/account-source</module>
-        <module>applications/patterns/filtering/sinks/account-sink</module>
-        <module>applications/patterns/filtering/apps/web-app</module>
+        <module>applications/patterns/caching/apps/account-cache-app</module>
+        <module>applications/patterns/integration/filtering/sources/account-source</module>
+        <module>applications/patterns/integration/filtering/sinks/account-sink</module>
+        <module>applications/patterns/integration/filtering/apps/web-app</module>
+        <!--   Reliable Delivery  -->
+        <module>applications/patterns/integration/reliable-delivery/sinks/api-sink</module>
+        <module>applications/patterns/integration/reliable-delivery/apps/flaky-api-app</module>
+        <module>applications/patterns/integration/reliable-delivery/apps/registration-app</module>
     </modules>
     <build>
         <pluginManagement>

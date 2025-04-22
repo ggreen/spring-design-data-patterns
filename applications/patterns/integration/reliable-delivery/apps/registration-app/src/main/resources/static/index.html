@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <title>reliable-delivery</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="styles/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+    <h1> Relivable Delivery Data Pattern Demo</h1>
+        <ul>
+            <li><a href="/swagger-ui.html">Swagger-UI</a></li>
+        </ul>
+
+        <div id="accountsPanel">
+            <h2>Accounts</h2>
+            <hr/>
+            <div id="dataRows">
+                <table >
+                    <tbody id="accounts">
+                        <tr>
+                            <th>Id</th>
+                            <td><input id="id" name="id"  type="text" value="001"/></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td><input id="name" name="accountName"  type="text" value="Account--01"/></td>
+                        </tr>
+                        <tr>
+                            <th>Type</th>
+                            <td><input id="accountType" name="type"  type="text" value="standard" /></td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td><input id="status" name="status"  type="text" value="OPEN"/></td>
+                        </tr>
+                        <tr>
+                            <th>Notes</th>
+                            <td><input id="notes" name="notes"  type="text"value="This is a GREAT ACCOUNT"/></td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td><input id="address" name="address"  type="text" value="123 Straight Street" /></td>
+                        </tr>
+                        <tr>
+                            <th>City/Town</th>
+                            <td><input id="cityTown" name="cityTown"  type="text" value="NewTown"/></td>
+                        </tr>
+                        <tr>
+                            <th>State/Province</th>
+                            <td><input id="stateProvince" name="stateProvince"  type="text" value="NJ"/></td>
+                        </tr>
+                        <tr>
+                            <th>ZIP/PostalCode</th>
+                            <td><input id="zipPostalCode" name="zipPostalCode"  type="text" value="55555"/></td>
+                        </tr>
+                        <tr>
+                            <th>Country Code</th>
+                            <td><input id="countryCode" name="countryCode"  type="text" value="US"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <br/>
+            <div>
+                <button id="flakyButton" name="flakyButton">Flaky</button> <button id="reliableButton" name="reliableButton">Reliable</button>
+            </div>
+        </div>
+    <script>
+        $(document).ready(function(){
+
+          $("#flakyButton").click(function(){
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: '/accounts/flaky',
+              data:  JSON.stringify({
+                        "id": $("#id").val(),
+                        "name": $("#name").val(),
+                        "accountType": $("#accountType").val(),
+                        "status": $("#status").val(),
+                        "notes": $("#notes").val(),
+                        "location" : {
+                            "address": $("#address").val(),
+                            "cityTown": $("#cityTown").val(),
+                            "stateProvince": $("#stateProvince").val(),
+                            "zipPostalCode": $("#zipPostalCode").val(),
+                            "countryCode": $("#countryCode").val()
+                            }
+                        }),
+              dataType: "text",
+              success: function (request, status, error) {
+                    alert("saved");
+                },
+              error: function (request, status, error) {
+                    alert("ERROR:"+error+" status:"+status+" responseText:"+request.responseText);
+                }});
+         });
+         //--------------------
+             $("#reliableButton").click(function(){
+          $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: '/accounts/reliable',
+              data:  JSON.stringify({
+                        "id": $("#id").val(),
+                        "name": $("#name").val(),
+                        "accountType": $("#accountType").val(),
+                        "status": $("#status").val(),
+                        "notes": $("#notes").val(),
+                        "location" : {
+                            "address": $("#address").val(),
+                            "cityTown": $("#cityTown").val(),
+                            "stateProvince": $("#stateProvince").val(),
+                            "zipPostalCode": $("#zipPostalCode").val(),
+                            "countryCode": $("#countryCode").val()
+                            }
+                        }),
+              dataType: "text",
+              success: function (request, status, error) {
+                    alert("saved");
+                },
+              error: function (request, status, error) {
+                    alert("ERROR:"+error+" status:"+status+" responseText:"+request.responseText);
+                }});
+         });
+         //--------------------
+        });
+        </script>
+            </body>
+
+
+        </html>

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: api-sink
+  config:
+    import: "optional:configserver:http://localhost:8888/"
+  cloud:
+    function:
+      definition: apiConsumer
+    stream:
+      function:
+        bindings:
+          apiConsumer-in-0: input
+          apiConsumer-out-0: output
