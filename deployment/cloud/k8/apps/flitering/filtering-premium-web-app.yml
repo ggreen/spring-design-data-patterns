@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run:  filtering-web-premium-app
+  name:  filtering-web-premium-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name:  filtering-web-premium-app
+  template:
+    metadata:
+      labels:
+        name:  filtering-web-premium-app
+    spec:
+      containers:
+        - env:
+            - name: management.endpoint.health.enabled
+              value: "true"
+            - name: management.endpoint.health.probes.enabled
+              value: "true"
+            - name: spring.application.name
+              value: "filtering-premium-web-app"
+            - name: server.port
+              value: "8080"
+            - name: account.type
+              value: premium
+            - name: spring.data.redis.host
+              value: valkey-premium-primary
+          image: cloudnativedata/filtering-web-app:0.0.2-SNAPSHOT
+          name: filtering-web-app
+#          imagePullPolicy: "Always"
+          imagePullPolicy: "IfNotPresent"
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health/liveness
+#              port: 8080
+#            initialDelaySeconds: 40
+#            timeoutSeconds: 2
+#            periodSeconds: 3
+#            failureThreshold: 2
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health/readiness
+#              port: 8080
+#            initialDelaySeconds: 40
+#            timeoutSeconds: 2
+#            periodSeconds: 3
+#            failureThreshold: 2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: filtering-web-premium-app
+spec:
+  selector:
+    name: filtering-web-premium-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer

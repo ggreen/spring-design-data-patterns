@@ -4,6 +4,9 @@ Install ValKey
 ./deployment/cloud/k8/data-services/valkey/install-valkey.sh
 ```
 
+```shell
+./deployment/cloud/k8/data-services/valkey/install-premium-valkey.sh
+```
 
 Install RabbitMQ Cluster Operator
 
@@ -43,6 +46,13 @@ kubectl apply -f ./deployment/cloud/k8/data-services/rabbitmq/rabbitmq-5-node-up
 
 ------------
 
+## Apps
+
+
 ```shell
-kubectl apply -f deployment/cloud/k8/apps/flitering/filtering-web-app.yml
+kubectl apply -f deployment/cloud/k8/apps/flitering/filtering-standard-web-app.yml
+```
+
+```shell
+kubectl apply -f deployment/cloud/k8/apps/flitering/filtering-premium-web-app.yml
 ```
