@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>spring.design.data.patterns</groupId>
 	<artifactId>filtering-web-app</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>filtering-web-app</name>
 	<description>filtering-web-app</description>
 	<properties>
