@@ -1,0 +1,1 @@
+podman run -p 6379:6379 --rm --name=valkey valkey/valkey:8.1

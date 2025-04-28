@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>spring.design.data.patterns</groupId>
-	<artifactId>account-sink</artifactId>
+	<artifactId>filtering-account-sink</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>account-sink</name>
 	<description>account-sink</description>

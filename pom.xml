@@ -13,8 +13,8 @@
         <module>components/account-domain</module>
         <module>applications/patterns/caching/apps/account-cache-app</module>
         <module>applications/patterns/integration/filtering/sources/account-source</module>
-        <module>applications/patterns/integration/filtering/sinks/account-sink</module>
-        <module>applications/patterns/integration/filtering/apps/web-app</module>
+        <module>applications/patterns/integration/filtering/sinks/filtering-account-sink</module>
+        <module>applications/patterns/integration/filtering/apps/filtering-web-app</module>
         <!--   Reliable Delivery  -->
         <module>applications/patterns/integration/reliable-delivery/sinks/api-sink</module>
         <module>applications/patterns/integration/reliable-delivery/apps/flaky-api-app</module>

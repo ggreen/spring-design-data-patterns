@@ -14,6 +14,7 @@ import spring.data.pattern.integration.reliable.delivery.repository.AccountRepos
 import java.net.http.HttpTimeoutException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
+import java.util.HashMap;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -25,9 +26,19 @@ import static org.springframework.http.ResponseEntity.ok;
 public class FlakyAccountController {
 
     private final AccountRepository accountRepository;
+    private HashMap<String,Boolean> map = new HashMap<>();
 
     @PostMapping("account")
     public ResponseEntity<Account> timeout(@RequestBody Account account) throws HttpTimeoutException {
+
+        if(account == null)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
+        //first return error
+        if( !map.containsKey(account.getId())) {
+            map.put(account.getId(),Boolean.TRUE);
+            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
+        }
 
         //Throw
         if ("TIMEOUT".equals(account.getStatus()))

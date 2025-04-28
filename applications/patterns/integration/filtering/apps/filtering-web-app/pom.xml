@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>spring.design.data.patterns</groupId>
-	<artifactId>web-app</artifactId>
+	<artifactId>filtering-web-app</artifactId>
 	<version>0.1.1-SNAPSHOT</version>
-	<name>web-app</name>
-	<description>web-app</description>
+	<name>filtering-web-app</name>
+	<description>filtering-web-app</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2024.0.1</spring-cloud.version>
