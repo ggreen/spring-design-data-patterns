@@ -43,16 +43,67 @@ Upgrade nodes
 kubectl apply -f ./deployment/cloud/k8/data-services/rabbitmq/rabbitmq-5-node-upgrade.yml
 ```
 
+```shell
+kubectl exec rabbitmq-server-0 -- rabbitmqctl enable_feature_flag all
+```
 
 ------------
 
 ## Apps
 
+Deploy Webs
 
 ```shell
-kubectl apply -f deployment/cloud/k8/apps/flitering/filtering-standard-web-app.yml
+kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-standard-web-app.yml
+kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-premium-web-app.yml
 ```
 
 ```shell
-kubectl apply -f deployment/cloud/k8/apps/flitering/filtering-premium-web-app.yml
+kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-account-source.yml
+```
+
+```shell
+kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-standard-account-sink.yml
+kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-premium-account-sink.yml
+```
+
+Testing
+
+
+
+```json
+{
+  "id": "standard1",
+  "name": "Standard Account 01",
+  "accountType": "standard",
+  "status": "OPEN",
+  "notes": "This account is standard",
+  "location": {
+    "id": "string",
+    "address": "12 Straight Street",
+    "cityTown": "Standard",
+    "stateProvince": "Stand",
+    "zipPostalCode": "55555",
+    "countryCode": "Standard"
+  }
+}
+```
+
+
+```json
+{
+  "id": "premium02",
+  "name": "Howard Account 02",
+  "accountType": "premium",
+  "status": "OPEN",
+  "notes": "This account is premium",
+  "location": {
+    "id": "string",
+    "address": "12 Howard Street",
+    "cityTown": "Howard",
+    "stateProvince": "Howard",
+    "zipPostalCode": "55555",
+    "countryCode": "London"
+  }
+}
 ```

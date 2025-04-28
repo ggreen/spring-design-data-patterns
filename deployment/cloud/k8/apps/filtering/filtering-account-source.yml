@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: filtering-account-source
+    run:  filtering-account-source
+  name:  filtering-account-source
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name:  filtering-account-source
+  template:
+    metadata:
+      labels:
+        name:  filtering-account-source
+    spec:
+      containers:
+        - env:
+            - name: spring.application.name
+              value: filtering-account-source
+            - name: spring.rabbitmq.host
+              value: rabbitmq
+            - name: spring.rabbitmq.stream.host
+              value: rabbitmq
+            - name: server.port
+              value: "8080"
+            - name: spring.rabbitmq.username
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-default-user
+                  key: username
+            - name: spring.rabbitmq.password
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-default-user
+                  key: password
+            - name: spring.cloud.stream.bindings.output.destination
+              value: "showcase.event.filter.streaming.accounts"
+          image: cloudnativedata/filtering-account-source:0.0.1-SNAPSHOT
+          name: filtering-account-source
+#          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: filtering-account-source
+spec:
+  selector:
+    name: filtering-account-source
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer

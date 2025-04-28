@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    run:  filtering-web-app
-  name:  filtering-web-app
+    run:  filtering-standard-web-app
+  name:  filtering-standard-web-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name:  filtering-web-app
+      name:  filtering-standard-web-app
   template:
     metadata:
       labels:
-        name:  filtering-web-app
+        name:  filtering-standard-web-app
     spec:
       containers:
         - env:
@@ -52,10 +52,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: filtering-web-app
+  name: filtering-standard-web-app
 spec:
   selector:
-    name: filtering-web-app
+    name: filtering-standard-web-app
   ports:
     - protocol: TCP
       port: 8080

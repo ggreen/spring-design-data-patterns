@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: filtering-premium-account-sink
+    run:  filtering-premium-account-sink
+  name:  filtering-premium-account-sink
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name:  filtering-premium-account-sink
+  template:
+    metadata:
+      labels:
+        name:  filtering-premium-account-sink
+    spec:
+      containers:
+        - env:
+            - name: spring.application.name
+              value: filtering-premium-account-sink
+            - name: account.type
+              value: premium
+            - name: spring.data.redis.host
+              value: valkey-premium-primary
+            - name: spring.rabbitmq.host
+              value: rabbitmq
+            - name: spring.rabbitmq.stream.host
+              value: rabbitmq
+            - name: server.port
+              value: "8080"
+            - name: spring.rabbitmq.username
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-default-user
+                  key: username
+            - name: spring.rabbitmq.password
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-default-user
+                  key: password
+            - name: spring.cloud.stream.bindings.output.destination
+              value: "showcase.event.filter.streaming.accounts"
+          image: cloudnativedata/filtering-account-sink:0.0.1-SNAPSHOT
+          name: filtering-account-sink
+#          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: filtering-account-sink
+spec:
+  selector:
+    name: filtering-account-sink
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
