@@ -12,7 +12,7 @@
     <modules>
         <module>components/account-domain</module>
         <module>applications/patterns/caching/apps/account-cache-app</module>
-        <module>applications/patterns/integration/filtering/sources/account-source</module>
+        <module>applications/patterns/integration/filtering/sources/filtering-account-source</module>
         <module>applications/patterns/integration/filtering/sinks/filtering-account-sink</module>
         <module>applications/patterns/integration/filtering/apps/filtering-web-app</module>
         <!--   Reliable Delivery  -->

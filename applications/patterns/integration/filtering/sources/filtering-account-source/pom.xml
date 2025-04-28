@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>spring.design.data.patterns</groupId>
-	<artifactId>account-source</artifactId>
+	<artifactId>filtering-account-source</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>account-source</name>
-	<description>account-source</description>
+	<name>filtering-account-source</name>
+	<description>filtering-account-source</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.rabbitmq.client</groupId>

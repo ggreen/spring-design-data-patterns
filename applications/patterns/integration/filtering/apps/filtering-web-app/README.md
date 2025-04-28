@@ -14,7 +14,7 @@ docker build  --platform linux/amd64,linux/arm64 -t filtering-web-app:0.0.2-SNAP
 Push
 ```shell
 docker tag filtering-web-app:0.0.2-SNAPSHOT cloudnativedata/filtering-web-app:0.0.2-SNAPSHOT
-                ````docker push cloudnativedata/filtering-web-app:0.0.2-SNAPSHOT````
+docker push cloudnativedata/filtering-web-app:0.0.2-SNAPSHOT
 ```
 
 ## Podman building image (not working)
