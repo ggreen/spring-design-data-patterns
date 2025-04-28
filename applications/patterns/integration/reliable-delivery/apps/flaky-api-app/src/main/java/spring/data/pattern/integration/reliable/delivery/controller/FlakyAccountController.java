@@ -26,7 +26,7 @@ import static org.springframework.http.ResponseEntity.ok;
 public class FlakyAccountController {
 
     private final AccountRepository accountRepository;
-    private HashMap<String,Boolean> map = new HashMap<>();
+    private HashMap<String,Integer> map = new HashMap<>();
 
     @PostMapping("account")
     public ResponseEntity<Account> timeout(@RequestBody Account account) throws HttpTimeoutException {
@@ -35,24 +35,17 @@ public class FlakyAccountController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
         //first return error
-        if( !map.containsKey(account.getId())) {
-            map.put(account.getId(),Boolean.TRUE);
-            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
-        }
+        var callCount = map.get(account.getId());
+        if(callCount == null)
+            callCount = 0;
 
-        //Throw
-        if ("TIMEOUT".equals(account.getStatus()))
-        {
-            log.error("RETURN timeout error based on status for account : {}",account);
-            return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).build();
-        }
+        callCount++;
+        map.put(account.getId(),callCount);
 
-        int second = LocalDateTime.now().get(ChronoField.SECOND_OF_DAY);
-        if(second %2 != 0)
-        {
-            var timeoutException =new HttpTimeoutException("TESTING");
-            log.error("Cannot process account: % THROWING EXCEPTION: %",account, timeoutException);
-            throw timeoutException;
+        switch (callCount){
+
+            case  1 : return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
+            case 2 : return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).build();
         }
 
         accountRepository.save(account);

@@ -42,10 +42,23 @@ class FlakyAccountControllerTest {
     }
 
     @Test
-    void notTooMany() throws HttpTimeoutException {
+    void secondTimeTimeout() throws HttpTimeoutException {
+
+        var expected = HttpStatus.REQUEST_TIMEOUT;
+        var actual = subject.timeout(account);
+        actual = subject.timeout(account);
+
+        assertNotNull(actual);
+
+        assertEquals(expected, actual.getStatusCode());
+
+    }
+
+    @Test
+    void ok() throws HttpTimeoutException {
 
         account = JavaBeanGeneratorCreator.of(Account.class).create();
-        var expected = HttpStatus.TOO_MANY_REQUESTS;
+        var expected = HttpStatus.OK;
         var actual = subject.timeout(account);
 
         try {
