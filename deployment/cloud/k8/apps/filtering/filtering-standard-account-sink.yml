@@ -22,7 +22,7 @@ spec:
             - name: account.type
               value: standard
             - name: spring.data.redis.host
-              value: valkey-primary
+              value: "valkey-primary"
             - name: spring.rabbitmq.host
               value: rabbitmq
             - name: spring.rabbitmq.stream.host

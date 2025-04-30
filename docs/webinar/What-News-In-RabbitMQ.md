@@ -1,23 +1,17 @@
-Install ValKey
+# Install ValKey
 
 ```shell
-./deployment/cloud/k8/data-services/valkey/install-valkey.sh
+#./deployment/cloud/k8/data-services/valkey/install-valkey.sh
 ```
 
 ```shell
-./deployment/cloud/k8/data-services/valkey/install-premium-valkey.sh
+#./deployment/cloud/k8/data-services/valkey/install-premium-valkey.sh
 ```
-
-Install RabbitMQ Cluster Operator
-
-```shell
-./deployment/cloud/k8/data-services/rabbitmq/rabbit-k8-setup.sh
-```
-
 
 create 5 nodes
 
 ```shell
+kubectl get pvc
 kubectl apply -f deployment/cloud/k8/data-services/rabbitmq/rabbitmq-5-node.yml
 ```
 
@@ -32,7 +26,6 @@ echo ""
 echo "open " http://$dash_url:15672
 echo "USER:" $ruser
 echo "PASSWORD:" $rpwd
-
 ```
 
 
@@ -51,20 +44,23 @@ kubectl exec rabbitmq-server-0 -- rabbitmqctl enable_feature_flag all
 
 ## Apps
 
-Deploy Webs
+Deploy Filtering Applications
 
 ```shell
-kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-standard-web-app.yml
-kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-premium-web-app.yml
+kubectl apply -f deployment/cloud/k8/apps/filtering
 ```
 
-```shell
-kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-account-source.yml
-```
 
 ```shell
-kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-standard-account-sink.yml
-kubectl apply -f deployment/cloud/k8/apps/filtering/filtering-premium-account-sink.yml
+export filtering_account_source=`kubectl get service filtering-account-source -o jsonpath="{.status.loadBalancer.ingress[0].ip}"`
+export filtering_standard_web_app=`kubectl get service filtering-standard-web-app -o jsonpath="{.status.loadBalancer.ingress[0].ip}"`
+export filtering_web_premium_app=`kubectl get service filtering-web-premium-app -o jsonpath="{.status.loadBalancer.ingress[0].ip}"`
+
+
+echo "filtering_account_source open " http://$filtering_account_source:8080
+echo "filtering_standard_web_app open " http://$filtering_standard_web_app:8080
+echo "filtering_web_premium_app open " http://$filtering_web_premium_app:8080
+
 ```
 
 Testing
@@ -77,7 +73,7 @@ Testing
   "name": "Standard Account 01",
   "accountType": "standard",
   "status": "OPEN",
-  "notes": "This account is standard",
+  "notes": "This account is standard for a test",
   "location": {
     "id": "string",
     "address": "12 Straight Street",
@@ -106,4 +102,41 @@ Testing
     "countryCode": "London"
   }
 }
+```
+
+
+
+=======================
+
+## Cleanup 
+
+
+
+```shell
+kubectl exec -it valkey-premium-primary-0 -- valkey-cli
+
+Del "showcase.streaming.event.account.domain.Account:premium03"
+keys "*"
+```
+
+
+```shell
+kubectl exec -it valkey-primary-0 -- valkey-cli
+
+Del "showcase.streaming.event.account.domain.Account:standard1"
+Del "showcase.streaming.event.account.domain.Account:standard2"
+keys "*" 
+```
+
+echo DEL "showcase.streaming.event.account.domain.Account:premium02" | valkey-cli
+kubectl exec -it valkey-premium-primary-0 -- echo DEL "showcase.streaming.event.account.domain.Account:premium03" | valkey-cli
+
+
+ 
+```
+
+```shell
+kubectl delete -f deployment/cloud/k8/apps/filtering
+kubectl delete RabbitMQCluster rabbitmq
+kubectl get pvc
 ```
