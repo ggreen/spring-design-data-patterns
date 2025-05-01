@@ -73,7 +73,7 @@ Testing
   "name": "Standard Account 01",
   "accountType": "standard",
   "status": "OPEN",
-  "notes": "This account is standard for a test",
+  "notes": "LIVE TESTING",
   "location": {
     "id": "string",
     "address": "12 Straight Street",
@@ -131,10 +131,7 @@ keys "*"
 echo DEL "showcase.streaming.event.account.domain.Account:premium02" | valkey-cli
 kubectl exec -it valkey-premium-primary-0 -- echo DEL "showcase.streaming.event.account.domain.Account:premium03" | valkey-cli
 
-
  
-```
-
 ```shell
 kubectl delete -f deployment/cloud/k8/apps/filtering
 kubectl delete RabbitMQCluster rabbitmq
