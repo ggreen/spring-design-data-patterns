@@ -21,6 +21,7 @@
         <module>applications/patterns/integration/reliable-delivery/apps/registration-app</module>
         <module>applications/services/mvc/web-service</module>
         <module>applications/services/reactive/reactive-service</module>
+        <module>applications/services/function/function-service</module>
     </modules>
     <build>
         <pluginManagement>

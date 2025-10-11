@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: function-service
+  cloud:
+    function:
+      definition: getEmployee;saveEmployee
