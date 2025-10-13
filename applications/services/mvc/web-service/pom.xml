@@ -8,7 +8,7 @@
 		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.github.com</groupId>
+	<groupId>com.github.ggreen</groupId>
 	<artifactId>web-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>web-service</name>
