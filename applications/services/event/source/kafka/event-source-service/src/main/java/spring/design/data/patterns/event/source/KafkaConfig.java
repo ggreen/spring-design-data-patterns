@@ -22,7 +22,7 @@ import spring.data.patterns.employee.domains.employee.records.Employee;
 @Configuration
 public class KafkaConfig {
 
-    @Value("${spring.cloud.stream.bindings.output.destination:employee-topic}")
+    @Value("${spring.cloud.stream.bindings.output.destination:employees}")
     private String employTopic;
 
     @Value("${kafka.topic.partitions:3}")
