@@ -24,6 +24,7 @@
         <module>applications/services/function/function-service</module>
         <module>applications/services/graphQL/graphQL-service</module>
         <module>applications/services/event/source/kafka/event-source-service</module>
+        <module>applications/services/event/source/rabbit/event-source-rabbit-service</module>
     </modules>
     <build>
         <pluginManagement>
