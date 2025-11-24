@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>spring.design.data.patterns</groupId>
-	<artifactId>event-source-service</artifactId>
+	<artifactId>event-source-kafka-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>event-source-service</name>
 	<description>event-source-service</description>

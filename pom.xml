@@ -23,8 +23,9 @@
         <module>applications/services/reactive/reactive-service</module>
         <module>applications/services/function/function-service</module>
         <module>applications/services/graphQL/graphQL-service</module>
-        <module>applications/services/event/source/kafka/event-source-service</module>
+        <module>applications/services/event/source/kafka/event-source-kafka-service</module>
         <module>applications/services/event/source/rabbit/event-source-rabbit-service</module>
+        <module>applications/services/gateway/gateway-service</module>
     </modules>
     <build>
         <pluginManagement>

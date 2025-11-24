@@ -1,6 +1,5 @@
 package spring.design.data.patterns.event.rabbit;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.amqp.rabbit.connection.ConnectionNameStrategy;
 import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
 import org.springframework.beans.factory.annotation.Value;

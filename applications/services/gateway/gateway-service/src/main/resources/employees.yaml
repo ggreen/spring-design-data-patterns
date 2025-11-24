@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: saveEmployees
+          uri: http://localhost:8081/saveEmployee # backend service
+          predicates:
+            - Path=/saveEmployee # incoming request
+          filters:
+            - StripPrefix=0  # keep path exactly
+            - name: CircuitBreaker
+              args:
+                name: failBackCircuitBreaker
+                fallbackUri: forward:/fallback
+                statusCodes:
+                  - 610
+                  - 500
+                  - 503
+                  - "NOT_FOUND"
+#            - name: CacheRequestBody
+#              args:
+#                bodyClass: java.lang.String
+gateway:
+  fallback:
+    httpUrl: "${http://localhost:8082/employees/fallback"
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework: TRACE
