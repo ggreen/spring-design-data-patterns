@@ -1,0 +1,20 @@
+spring:
+  cloud:
+#    gateway:
+#      routes:
+#        - id: save-employee-route
+#          uri: http://localhost:8081
+#          predicates:
+#            - Path=**
+#          filters:
+#            - StripPrefix=0
+#            - name: CacheRequestBody
+#              args:
+#                bodyClass: java.lang.String
+gateway:
+  fallback:
+    httpUrl: "http://localhost:8082/employees"
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework: INFO

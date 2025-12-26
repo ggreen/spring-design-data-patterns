@@ -10,7 +10,7 @@
     <version>1.0.0</version>
     <name>spring-design-data-patterns</name>
     <modules>
-        <module>components/account-domain</module>
+        <module>components/domains</module>
         <module>applications/patterns/caching/apps/account-cache-app</module>
         <module>applications/patterns/integration/filtering/sources/filtering-account-source</module>
         <module>applications/patterns/integration/filtering/sinks/filtering-account-sink</module>
@@ -19,6 +19,14 @@
         <module>applications/patterns/integration/reliable-delivery/sinks/api-sink</module>
         <module>applications/patterns/integration/reliable-delivery/apps/flaky-api-app</module>
         <module>applications/patterns/integration/reliable-delivery/apps/registration-app</module>
+        <module>applications/services/mvc/web-service</module>
+        <module>applications/services/reactive/reactive-service</module>
+        <module>applications/services/function/function-service</module>
+        <module>applications/services/graphQL/graphQL-service</module>
+        <module>applications/services/event/source/kafka/event-source-kafka-service</module>
+        <module>applications/services/event/source/rabbit/event-source-rabbit-service</module>
+        <module>applications/services/gateway/gateway-service</module>
+        <module>applications/patterns/caching/services/employee-caching-service</module>
     </modules>
     <build>
         <pluginManagement>

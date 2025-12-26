@@ -50,7 +50,7 @@
 		</dependency>
 		<dependency>
 			<groupId>spring.design.data.patterns</groupId>
-			<artifactId>account-domain</artifactId>
+			<artifactId>domains</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

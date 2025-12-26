@@ -1,0 +1,32 @@
+type Query {
+    employeeById(id: ID): Employee
+}
+
+type Employee {
+    id: ID
+    empName: String
+    jobName: String
+    hireDate: String
+    salary: Float
+    commission: Float
+    department: String
+    managerId: String
+}
+
+
+
+input EmployeeInput {
+    id: ID
+    empName: String
+    jobName: String
+    hireDate: String
+    salary: Float
+    commission: Float
+    department: String
+    managerId : String
+}
+
+
+type Mutation {
+    saveEmployee(input: EmployeeInput!): Employee!
+}
