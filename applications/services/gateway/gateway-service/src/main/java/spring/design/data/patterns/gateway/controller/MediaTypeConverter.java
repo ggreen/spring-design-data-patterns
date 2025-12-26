@@ -18,9 +18,12 @@ public class MediaTypeConverter {
 
 
     public String toMimeType(Object contentType) {
-        var  contentTypeText = String.valueOf(contentType);
 
-        if(Objects.isNull(contentTypeText) || contentTypeText.isEmpty())
+        if(contentType == null)
+            return defaultContentType;
+
+        var contentTypeText = Objects.toString(contentType, "").trim();
+        if(contentTypeText.isEmpty())
             return defaultContentType;
 
         return contentTypeText;

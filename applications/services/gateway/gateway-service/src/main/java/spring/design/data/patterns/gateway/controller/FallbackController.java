@@ -23,8 +23,8 @@ import static java.lang.String.valueOf;
 /**
  * @author Gregory Green
  */
-@RestController
-@RequestMapping("/fallback")
+//@RestController
+//@RequestMapping("/fallback")
 @Slf4j
 public class FallbackController {
 
