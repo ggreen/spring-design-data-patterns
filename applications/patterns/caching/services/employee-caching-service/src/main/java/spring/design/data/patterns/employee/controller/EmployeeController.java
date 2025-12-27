@@ -5,6 +5,7 @@ import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 import nyla.solutions.core.patterns.conversion.Converter;
 import nyla.solutions.core.util.JavaBean;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import spring.data.patterns.employee.domains.employee.records.Employee;
 import spring.design.data.patterns.employee.entities.EmployeeEntity;
@@ -29,6 +30,7 @@ public class EmployeeController {
     }
 
     @GetMapping("employee/{id}")
+    @Cacheable(value = "employees")
     public @Nullable  Employee findEmployeeById(@PathVariable @Nonnull String id) {
         return toEmployee
                 .convert(employeeRepository.findById(id).orElse(null));
