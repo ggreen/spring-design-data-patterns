@@ -3,7 +3,7 @@ package spring.design.data.patterns.function.service;
 import lombok.RequiredArgsConstructor;
 import nyla.solutions.core.patterns.repository.FindByIdRepository;
 import org.springframework.stereotype.Component;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 
 import java.util.function.Function;
 
@@ -12,11 +12,11 @@ import java.util.function.Function;
  */
 @RequiredArgsConstructor
 @Component
-public class GetEmployee implements Function<String,Employee> {
+public class GetEmployee implements Function<String, Location> {
 
-    private final FindByIdRepository<Employee,String> findByIdRepository;
+    private final FindByIdRepository<Location,String> findByIdRepository;
     @Override
-    public Employee apply(String employeeId) {
+    public Location apply(String employeeId) {
         return findByIdRepository.findById(employeeId).orElse(null);
     }
 }

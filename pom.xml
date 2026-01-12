@@ -27,6 +27,7 @@
         <module>applications/services/event/source/rabbit/event-source-rabbit-service</module>
         <module>applications/services/gateway/gateway-service</module>
         <module>applications/patterns/caching/services/employee-caching-service</module>
+        <module>applications/patterns/caching/services/location-near-caching</module>
     </modules>
     <build>
         <pluginManagement>

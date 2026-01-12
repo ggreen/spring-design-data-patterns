@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.converter.MessageConverter;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 
 /**
  * @author Gregory Green
@@ -29,7 +29,7 @@ public class KafkaConfig {
     private int replicas;
 
     @Bean
-    Publisher<Employee> employeePublisher(KafkaTemplate<String,Employee> template)
+    Publisher<Location> employeePublisher(KafkaTemplate<String, Location> template)
     {
         return employee -> template.send(employTopic,employee.id(),employee);
     }

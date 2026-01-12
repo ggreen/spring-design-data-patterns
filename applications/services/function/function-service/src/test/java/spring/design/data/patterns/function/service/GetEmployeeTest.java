@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 
 import java.util.Optional;
 
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 class GetEmployeeTest {
 
 
-    private final static Employee employee = JavaBeanGeneratorCreator.of(Employee.class).create();
+    private final static Location employee = JavaBeanGeneratorCreator.of(Location.class).create();
     private GetEmployee subject;
 
     @BeforeEach
@@ -29,14 +29,14 @@ class GetEmployeeTest {
     }
 
     @Mock
-    private FindByIdRepository<Employee,String> repository;
+    private FindByIdRepository<Location,String> repository;
 
     @Test
     void findEmployeeById() {
 
         when(repository.findById(any())).thenReturn(Optional.of(employee));
 
-        Employee actual = subject.apply(employee.id());
+        Location actual = subject.apply(employee.id());
 
         assertNotNull(actual);
         assertEquals(employee,actual);

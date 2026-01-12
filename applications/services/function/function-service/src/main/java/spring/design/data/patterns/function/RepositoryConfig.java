@@ -3,7 +3,7 @@ package spring.design.data.patterns.function;
 import nyla.solutions.core.patterns.repository.memory.InMemoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 
 /**
  * @author Gregory Green
@@ -11,7 +11,7 @@ import spring.data.patterns.employee.domains.employee.records.Employee;
 @Configuration
 public class RepositoryConfig {
 
-    @Bean InMemoryRepository<Employee,String> repository()
+    @Bean InMemoryRepository<Location,String> repository()
     {
         return  InMemoryRepository.builder()
                 .withIdProperty("id")

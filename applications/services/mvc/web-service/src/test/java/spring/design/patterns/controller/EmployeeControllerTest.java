@@ -4,7 +4,7 @@ import nyla.solutions.core.patterns.creational.generator.JavaBeanGeneratorCreato
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +12,7 @@ class EmployeeControllerTest {
 
 
     private EmployeeController subject;
-    private static final Employee employee = JavaBeanGeneratorCreator.of(Employee.class).create();
+    private static final Location employee = JavaBeanGeneratorCreator.of(Location.class).create();
 
     @BeforeEach
     void setUp() {

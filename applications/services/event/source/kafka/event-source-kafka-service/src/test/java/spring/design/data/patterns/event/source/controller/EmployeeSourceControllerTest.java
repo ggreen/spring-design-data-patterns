@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -16,9 +16,9 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class EmployeeSourceControllerTest {
 
-    private Employee employee = JavaBeanGeneratorCreator.of(Employee.class).create();
+    private Location employee = JavaBeanGeneratorCreator.of(Location.class).create();
     @Mock
-    private Publisher<Employee> employeePublisher;
+    private Publisher<Location> employeePublisher;
     private EmployeeSourceController subject;
 
     @BeforeEach

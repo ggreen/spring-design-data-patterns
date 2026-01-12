@@ -1,15 +1,13 @@
 package spring.design.data.patterns.employee.controller;
 
-import nyla.solutions.core.patterns.conversion.Converter;
 import nyla.solutions.core.patterns.creational.generator.JavaBeanGeneratorCreator;
-import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 import spring.design.data.patterns.employee.entities.EmployeeEntity;
 import spring.design.data.patterns.employee.repository.EmployeeRepository;
 
@@ -26,7 +24,7 @@ class EmployeeControllerTest {
 
     private EmployeeController subject;
 
-    private final Employee employee = JavaBeanGeneratorCreator.of(Employee.class).create();
+    private final Location employee = JavaBeanGeneratorCreator.of(Location.class).create();
     @Mock
     private EmployeeRepository employeeRepository;
     @Mock
@@ -53,4 +51,6 @@ class EmployeeControllerTest {
          verify(employeeRepository).save(any());
 
     }
+
+
 }

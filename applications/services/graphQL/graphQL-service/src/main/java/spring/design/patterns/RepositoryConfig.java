@@ -3,7 +3,7 @@ package spring.design.patterns;
 import nyla.solutions.core.patterns.repository.memory.InMemoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 import spring.design.patterns.repository.EmployeeRepository;
 
 import java.util.Optional;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public class RepositoryConfig {
 
     @Bean
-    InMemoryRepository<Employee, String> inMemoryRepository()
+    InMemoryRepository<Location, String> inMemoryRepository()
     {
         return InMemoryRepository.builder()
                 .withIdProperty("id")
@@ -23,15 +23,15 @@ public class RepositoryConfig {
     }
 
     @Bean
-    EmployeeRepository employeeRepository(InMemoryRepository<Employee, String> inMemoryRepository) {
+    EmployeeRepository employeeRepository(InMemoryRepository<Location, String> inMemoryRepository) {
         return new EmployeeRepository() {
             @Override
-            public Optional<Employee> findById(String id) {
+            public Optional<Location> findById(String id) {
                 return inMemoryRepository.findById(id);
             }
 
             @Override
-            public Employee save(Employee employee) {
+            public Location save(Location employee) {
                 return inMemoryRepository.save(employee);
             }
         };

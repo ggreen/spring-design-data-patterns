@@ -149,3 +149,9 @@ at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecuto
 at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
 at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.15.jar:11.0.15]
 at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+
+
+Near Cache
+
+Note: Redis Pub/Sub is fire and forget; that is, if your Pub/Sub client disconnects, and reconnects later, all the events delivered during the time the client was disconnected are lost.

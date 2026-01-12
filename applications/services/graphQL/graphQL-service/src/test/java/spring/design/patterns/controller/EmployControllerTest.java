@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import spring.data.patterns.employee.domains.employee.records.Employee;
+import spring.data.patterns.employee.domains.employee.records.Location;
 import spring.design.patterns.domain.EmployeeInput;
 import spring.design.patterns.repository.EmployeeRepository;
 
@@ -27,7 +27,7 @@ class EmployControllerTest {
     private EmployController subject;
     @Mock
     private EmployeeRepository repository;
-    private Employee employee = JavaBeanGeneratorCreator.of(Employee.class).create();
+    private Location employee = JavaBeanGeneratorCreator.of(Location.class).create();
 
     @BeforeEach
     void setUp() {
